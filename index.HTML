@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College of Business Education - Mwanza Campus</title>
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Variables for easy theming */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .rr {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Marquee Gallery - Modern Alternative */
+        .gallery-container {
+            background-color: var(--light-color);
+            padding: 1rem 0;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .gallery-scroll {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+
+        .gallery-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        .gallery-item {
+            flex: 0 0 auto;
+            width: 250px;
+            height: 180px;
+            margin: 0 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 5 - 50px)); }
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        /* About Section */
+        .about-section {
+            position: relative;
+        }
+
+        .about-section img {
+            float: left;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            width: 120px;
+            height: auto;
+        }
+
+        /* Events List */
+        .events-list {
+            list-style-position: inside;
+        }
+
+        .events-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        /* Links Section */
+        .links-section a {
+            display: block;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .links-section a:hover {
+            color: var(--accent-color);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            .rr {
+                font-size: 1.4rem;
+            }
+            
+            .hero-banner {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="rr">College of Business Education<br>Mwanza Campus</h2>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="Library.html">Library</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="comment.html">Comment</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="hero-banner">
+            <img src="image/ALL.png" alt="CBE Mwanza Campus">
+        </div>
+
+        <div class="gallery-container">
+            <div class="gallery-scroll">
+                <div class="gallery-item">
+                    <img src="image/a5.jpg" alt="Campus Image">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/a4.jpg" alt="Campus Image">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/a3.jpg" alt="Campus Image">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/a1.png" alt="Campus Image">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/a2.jpg" alt="Campus Image">
+                </div>
+                <!-- Duplicate items for seamless looping -->
+                <div class="gallery-item">
+                    <img src="image/a5.jpg" alt="Campus Image">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/a4.jpg" alt="Campus Image">
+                </div>
+                <div class="gallery-item">
+                    <img src="image/a3.jpg" alt="Campus Image">
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="about-section card">
+                <img src="image/cbe.png" alt="CBE Logo">
+                <h3>About Our College</h3>
+                <p>The origin of the College of Business Education (CBE) is closely linked to the history of Tanzania's Independence on 9th December 1961. The newly independent state found itself in need of trained professionals.</p>
+                <p>Student Health Seminar - ACADEMIC YEAR 2025/2026</p>
+                <p>CBE History | Staff Profiles | Contact us | Job Openings | Map & Directions</p>
+                <p>Our Campuses: Dar Campus, Mwanza Campus, Dodoma Campus, Mbeya Campus, Arusha Campus</p>
+            </div>
+
+            <div class="card">
+                <h3>New Events</h3>
+                <ol class="events-list">
+                    <li>Tourism Week</li>
+                    <li>Sports and Game Competition</li>
+                    <li>Enjoyment Disco</li>
+                    <li>Watoto Yatima Charity Event</li>
+                </ol>
+            </div>
+
+            <div class="card links-section">
+                <h3>Related Links</h3>
+                <a href="#">TCRA</a>
+                <a href="#">TCIT</a>
+                <a href="#">NECTA</a>
+                <a href="#">HELB</a>
+                <a href="#">Ministry of Education</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 College of Business Education - Mwanza Campus. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

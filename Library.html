@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - College of Business Education</title>
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Color Variables */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --gray: #95a5a6;
+            --success: #2ecc71;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            background-color: var(--accent);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Gallery Section - Modern Alternative */
+        .gallery {
+            background-color: var(--light);
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1rem;
+            padding: 1rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery-container::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        .gallery-container::-webkit-scrollbar-thumb {
+            background-color: var(--secondary);
+            border-radius: 20px;
+        }
+
+        .gallery-item {
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+            width: 280px;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 2rem;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .welcome-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-content p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .service-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 0.75rem;
+                flex: 1 0 120px;
+            }
+
+            .hero-banner {
+                height: 200px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-image {
+                height: 200px;
+            }
+
+            .welcome-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">College of Business Education</div>
+        <div>Mwanza Campus - Library Services</div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="about.html">About us</a>
+            <a href="Library.html" class="active">Library</a>
+            <a href="contact.html">Contact</a>
+            <a href="comment.html">Comment</a>
+        </div>
+    </nav>
+
+    <div class="hero-banner">
+        <img src="image/ALL.png" alt="CBE Library">
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="image/a5.jpg" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a4.jpg" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a3.jpg" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a1.png" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a2.jpg" alt="Campus Image">
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <section class="welcome-section">
+            <h2>Welcome to CBE Library Services</h2>
+            <p>At CBE, we understand the unique needs of international students, and we are committed to providing a supportive and enriching environment for your academic journey.</p>
+        </section>
+
+        <div class="services-grid">
+            <article class="service-card">
+                <div class="service-image">
+                    <img src="image/l1.jpg" alt="Student Accommodation">
+                </div>
+                <div class="service-content">
+                    <h3>1. Accommodation Services</h3>
+                    <p>The College has a limited number of rooms in its hostels. To secure accommodation at the College Hostels:</p>
+                    <ul>
+                        <li>Complete registration and request accommodation online (through CoSIS)</li>
+                        <li>After system approval, report to the Dean of Students' office</li>
+                        <li>Receive and pay the accommodation invoice through bank</li>
+                    </ul>
+                    <p><span class="highlight">Priority in room allocation</span> is given to our international students on a first-come, first-served basis.</p>
+                </div>
+            </article>
+
+            <article class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Library Interior">
+                </div>
+                <div class="service-content">
+                    <h3>2. Library Services</h3>
+                    <p>The mission of the College of Business Education library is to enrich the learning, teaching, and research journey of our college community in today's digital world.</p>
+                    <p>We offer:</p>
+                    <ul>
+                        <li>A physical library with extensive collections (Open Mon-Fri 8:00 AM - 9:00 PM, Sat 8:00 AM - 4:00 PM)</li>
+                        <li>Access to e-resources through various databases</li>
+                        <li>Expert assistance from our librarians</li>
+                    </ul>
+                    <p>Visit: <a href="https://cbe.ac.tz/library" target="_blank" style="color: var(--secondary);">https://cbe.ac.tz/library</a><br>
+                    Email: <a href="mailto:hlib@cbe.ac.tz" style="color: var(--secondary);">hlib@cbe.ac.tz</a></p>
+                </div>
+            </article>
+
+            <article class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Transportation in Dar es Salaam">
+                </div>
+                <div class="service-content">
+                    <h3>3. Transportation Options</h3>
+                    <p>Navigating the city of Dar es Salaam is made easy with various transportation options:</p>
+                    <ul>
+                        <li>Public buses (daladalas) and rapid transit buses (mwendokasi)</li>
+                        <li>Taxis including Uber, Bolt, Taxify, and licensed taxis</li>
+                        <li>Ferries for crossing the harbor</li>
+                    </ul>
+                    <p>We provide valuable insights into education, cutting-edge research led by our esteemed academicians, and expert guidance spanning multiple domains including:</p>
+                    <ul>
+                        <li>Business Management</li>
+                        <li>Human Resources</li>
+                        <li>Information and Communication Technology (ICT)</li>
+                        <li>Entrepreneurship</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 College of Business Education - Mwanza Campus. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

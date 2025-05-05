@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments - College of Business Education</title>
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Color Variables */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --gray: #95a5a6;
+            --success: #2ecc71;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Gallery Section - Modern Alternative */
+        .gallery {
+            background-color: var(--light);
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1rem;
+            padding: 1rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery-container::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        .gallery-container::-webkit-scrollbar-thumb {
+            background-color: var(--secondary);
+            border-radius: 20px;
+        }
+
+        .gallery-item {
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+            width: 280px;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        /* Comment Section */
+        .comment-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .comment-section h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+            text-align: center;
+        }
+
+        /* Resource Selectors */
+        .resource-selectors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .resource-box {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .resource-box h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray);
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: white;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%232c3e50' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+            appearance: none;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        option {
+            padding: 0.5rem;
+        }
+
+        /* Comment Form */
+        .comment-form {
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .submit-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo Section */
+        .logo-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .logo-section img {
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .logo-section img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 0.75rem;
+                flex: 1 0 120px;
+            }
+
+            .hero-banner {
+                height: 200px;
+            }
+
+            .resource-selectors {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">College of Business Education</div>
+        <div>Mwanza Campus</div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="about.html">About us</a>
+            <a href="Library.html">Library</a>
+            <a href="contact.html">Contact</a>
+            <a href="comment.html" class="active">Comment</a>
+        </div>
+    </nav>
+
+    <div class="hero-banner">
+        <img src="image/ALL.png" alt="CBE Mwanza Campus">
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="image/a5.jpg" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a4.jpg" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a3.jpg" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a1.png" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a2.jpg" alt="Campus Image">
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <section class="comment-section">
+            <h1>Share Your Feedback</h1>
+            
+            <div class="resource-selectors">
+                <div class="resource-box">
+                    <h3>E-RESOURCES</h3>
+                    <select>
+                        <option value="1">Select an E-Resource</option>
+                        <option value="2">EBSCO</option>
+                        <option value="3">Emerald</option>
+                        <option value="4">Free online journals</option>
+                        <option value="5">CBE institution repository</option>
+                        <option value="6">Oxford African America student</option>
+                        <option value="7">Press release</option>
+                        <option value="8">CBE member</option>
+                    </select>
+                </div>
+                
+                <div class="resource-box">
+                    <h3>CONTACT INFORMATION</h3>
+                    <select>
+                        <option value="1">College Contact Details</option>
+                        <option value="2">Website: www.cbe.ac.tz</option>
+                        <option value="3">Tel: +255 22 215 0177</option>
+                        <option value="4">Email: rector@cbe.ac.tz</option>
+                    </select>
+                </div>
+            </div>
+
+            <form class="comment-form" id="commentForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="What is your comment about?">
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment">Your Comment</label>
+                    <textarea id="comment" name="comment" placeholder="Share your thoughts with us..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Comment</button>
+            </form>
+        </section>
+
+        <div class="logo-section">
+            <img src="image/03.jpg" alt="CBE Logo">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 College of Business Education - Mwanza Campus. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your comment! We appreciate your feedback.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

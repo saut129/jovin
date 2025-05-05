@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - College of Business Education</title>
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Color Variables */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --gray: #95a5a6;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Gallery Section - Modern Alternative */
+        .gallery {
+            background-color: var(--light);
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1rem;
+            padding: 1rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery-container::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        .gallery-container::-webkit-scrollbar-thumb {
+            background-color: var(--secondary);
+            border-radius: 20px;
+        }
+
+        .gallery-item {
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+            width: 280px;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+        }
+
+        /* About Section */
+        .about-content {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .about-content h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .about-image {
+            float: right;
+            margin: 0 0 1rem 2rem;
+            width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .guidelines-list {
+            margin-top: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .guidelines-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Registration Form */
+        .registration-form {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 100px;
+        }
+
+        .registration-form h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .submit-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                float: none;
+                width: 100%;
+                margin: 0 0 1.5rem 0;
+            }
+
+            .registration-form {
+                position: static;
+                margin-top: 2rem;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 0.75rem;
+                flex: 1 0 120px;
+            }
+
+            .hero-banner {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">College of Business Education</div>
+        <div>Mwanza Campus</div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="about.html">About us</a>
+            <a href="Library.html">Library</a>
+            <a href="contact.html">Contact</a>
+            <a href="comment.html">Comment</a>
+        </div>
+    </nav>
+
+    <div class="hero-banner">
+        <img src="image/ALL.png" alt="CBE Mwanza Campus">
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="image/a5.jpg" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a4.jpg" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a3.jpg" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a1.png" alt="Campus Image">
+            </div>
+            <div class="gallery-item">
+                <img src="image/a2.jpg" alt="Campus Image">
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <main class="about-content">
+            <h1>About CBE Mwanza Campus</h1>
+            <img src="image/about2.jpeg" alt="CBE Guidelines" class="about-image">
+            
+            <p>The College of Business Education (CBE) provides quality education to prepare students for both government and private sector employment. Our Mwanza campus offers an excellent learning environment with modern buildings and facilities as shown in the pictures throughout this site.</p>
+            
+            <h3>The CBE Guidelines</h3>
+            <ul class="guidelines-list">
+                <li>Guidelines of Entrepreneurship Workshops</li>
+                <li>Programs Guidelines of Capacity Building for Business Education to Youth</li>
+                <li>Anti-Plagiarism Guidelines</li>
+                <li>User Access Management and Password Guidelines</li>
+            </ul>
+            
+            <p>CBE has multiple campuses across different regions, all providing high-quality education. Our campuses include:</p>
+            <ul class="guidelines-list">
+                <li>Dar es Salaam Campus</li>
+                <li>Mwanza Campus</li>
+                <li>Dodoma Campus</li>
+                <li>Mbeya Campus</li>
+                <li>Arusha Campus</li>
+            </ul>
+        </main>
+
+        <aside class="registration-form">
+            <h2>Registration Form</h2>
+            <form id="submit" action="" method="get">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                </div>
+                
+                <button type="submit" class="submit-btn">Sign In</button>
+            </form>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 College of Business Education - Mwanza Campus. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
